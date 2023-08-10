@@ -58,8 +58,10 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.4f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\BulletScript.cs" />
     <Compile Include="Assets\Scripts\BlockScript.cs" />
+    <Compile Include="Assets\Scripts\WallScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\UI\Lilita_One (3)\OFL.txt" />
