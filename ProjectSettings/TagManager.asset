@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Block
+  - GameManager
+  - Button50
+  - Button100
+  - Button250
+  - Button500
+  - ButtonStart
+  - Dpad
+  - DpadA
   layers:
   - Default
   - TransparentFX
