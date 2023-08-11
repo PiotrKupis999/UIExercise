@@ -16,13 +16,15 @@ public class BlockScript : MonoBehaviour
     private float second = 0;
     private float rotateTime = 0;
 
+
     [SerializeField]
     private Transform barrel;
 
 
     private void Start()
     {
-                
+
+
         if (hp==2)
         {
             GetComponent<Renderer>().material.color = new Color(0.3215686f, 937255f, 0);
@@ -41,6 +43,9 @@ public class BlockScript : MonoBehaviour
 
     void Update()
     {
+
+
+
         TimeAdd();
 
         //random rotating the block

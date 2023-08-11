@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public int blocksNumber;
     public GameObject blockPrefab;
     public float spawnCollisionCheckRadius;
 
+    private int blocksNumber;
 
-    void Start()
+    void Awake()
     {
+        blocksNumber = PlayerPrefs.GetInt("blocksNumber");
+
         for (int i = 0; i < blocksNumber; i++)
         {
             SpawnTheBlock(3);
@@ -21,6 +24,11 @@ public class GameController : MonoBehaviour
     void Update()
     {
         Debug.Log(GameObject.FindGameObjectsWithTag("Block").Length);
+
+        if (GameObject.FindGameObjectsWithTag("Block").Length < 2)
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
 

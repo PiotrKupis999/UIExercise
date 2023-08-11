@@ -355,6 +355,7 @@
 "Assets/Scripts/BlockScript.cs"
 "Assets/Scripts/BulletScript.cs"
 "Assets/Scripts/GameController.cs"
+"Assets/Scripts/UIScript.cs"
 "Assets/Scripts/WallScript.cs"
 -langversion:9.0
 
