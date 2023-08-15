@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public GameObject blockPrefab;
+    public GameObject wallPrefab;
     public float spawnCollisionCheckRadius;
 
     private int blocksNumber;
+    private bool spawning;
 
     void Awake()
     {
@@ -16,9 +18,10 @@ public class GameController : MonoBehaviour
 
         for (int i = 0; i < blocksNumber; i++)
         {
-            SpawnTheBlock(3);
+            SpawnTheBlock(3,false);
         }
 
+        WallMaker();
     }
 
     void Update()
@@ -33,21 +36,57 @@ public class GameController : MonoBehaviour
 
 
 
-    public void SpawnTheBlock(int _hp)
+    public void SpawnTheBlock(int _hp, bool _delay)
     {
-        var randomPosition = new Vector3(Random.Range(-750f, 750f), 0, Random.Range(-350f, 500f));
-        var blockPosition = transform.position + randomPosition;
+        var blockPosition = new Vector3(Random.Range(-Camera.main.pixelWidth, Camera.main.pixelWidth), 0, Random.Range(-Camera.main.pixelHeight, Camera.main.pixelHeight));
 
         if (!Physics.CheckSphere(blockPosition, spawnCollisionCheckRadius))
         {
             var block = Instantiate(blockPrefab, blockPosition, Quaternion.identity);
             block.GetComponent<BlockScript>().hp = _hp;
 
+            if (_delay)
+            {
+                StartCoroutine(SpawnDelay(block));
+            }
+
         }
         else
         {
-            SpawnTheBlock(_hp);
+            SpawnTheBlock(_hp, _delay);
         }
+    }
+
+    private IEnumerator SpawnDelay(GameObject _block)
+    {
+        MakeInvisible(_block);
+        _block.tag = "InvisibleBlock";
+
+
+        yield return new WaitForSeconds(2);
+
+        MakeInvisible(_block);
+        _block.tag = "Block";
+
+    }
+
+    private void MakeInvisible(GameObject _object)
+    {
+        _object.GetComponent<BlockScript>().enabled = !_object.GetComponent<BlockScript>().enabled;
+        _object.GetComponent<MeshRenderer>().enabled = !_object.GetComponent<MeshRenderer>().enabled;
+        //_object.GetComponent<BoxCollider>().enabled = !_object.GetComponent<BoxCollider>().enabled;
+
+        _object.transform.GetChild(1).gameObject.SetActive(!_object.transform.GetChild(1).gameObject.active);
+        
+
+    }
+
+    private void WallMaker()
+    {
+        Instantiate(wallPrefab, new Vector3(Camera.main.pixelWidth + 200f, 0, 0), Quaternion.Euler(0, 90, 0));
+        Instantiate(wallPrefab, new Vector3(-Camera.main.pixelWidth - 200f, 0, 0), Quaternion.Euler(0, 90, 0));
+        Instantiate(wallPrefab, new Vector3(0, 0, Camera.main.pixelHeight + 200f), Quaternion.identity);
+        Instantiate(wallPrefab, new Vector3(0, 0, -Camera.main.pixelHeight - 200f), Quaternion.identity);
     }
 
 }

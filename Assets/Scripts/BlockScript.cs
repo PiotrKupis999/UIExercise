@@ -27,16 +27,12 @@ public class BlockScript : MonoBehaviour
 
         if (hp==2)
         {
-            GetComponent<Renderer>().material.color = new Color(0.3215686f, 937255f, 0);
+            GetComponent<Renderer>().material.color = new Color(1, 0.4273585f, 0.4273585f);
 
         }
         if (hp == 1)
         {
-            GetComponent<Renderer>().material.color = new Color(1, 0.8078432f, 0);
-        }
-        if (hp < 1)
-        {
-            GetComponent<Renderer>().material.color = Color.black;
+            GetComponent<Renderer>().material.color = new Color(1, 0.159434f, 0.159434f);
         }
 
     }

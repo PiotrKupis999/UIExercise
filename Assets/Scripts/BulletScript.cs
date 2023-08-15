@@ -13,19 +13,19 @@ public class BulletScript : MonoBehaviour
         gameController = gameManager.GetComponent<GameController>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider _other)
     {
         //the barrel does not have 'block' tag
-        if (other.tag == "Block")
+        if (_other.tag == "Block")
         {
-            var currentHp = other.gameObject.GetComponent<BlockScript>().hp;
+            var currentHp = _other.gameObject.GetComponent<BlockScript>().hp;
 
             if (currentHp > 1)
             {
-                gameController.SpawnTheBlock(currentHp - 1);
+                gameController.SpawnTheBlock(currentHp - 1, true);
             }
 
-            Destroy(other.gameObject);
+            Destroy(_other.gameObject);
             Destroy(this.gameObject);
         }
     }

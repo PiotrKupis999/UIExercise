@@ -13,6 +13,7 @@ TagManager:
   - ButtonStart
   - Dpad
   - DpadA
+  - InvisibleBlock
   layers:
   - Default
   - TransparentFX

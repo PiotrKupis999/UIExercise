@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WallScript : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider _other)
     {
-        Destroy(other.gameObject);
+        Destroy(_other.gameObject);
     }
 }
