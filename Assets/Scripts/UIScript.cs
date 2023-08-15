@@ -25,9 +25,9 @@ public class UIScript : MonoBehaviour
     }
 
 
-    public void LoadScene (int sceneId)
+    public void LoadScene (int _sceneId)
     {
-        SceneManager.LoadScene(sceneId);
+        SceneManager.LoadScene(_sceneId);
         /*
         if (sceneId == 0)
         {
@@ -37,19 +37,19 @@ public class UIScript : MonoBehaviour
         */
     }
 
-    public void SetBlocksNumber (int number)
+    public void SetBlocksNumber (int _number)
     {
-        PlayerPrefs.SetInt("blocksNumber", number);
+        PlayerPrefs.SetInt("blocksNumber", _number);
         ClearChecks();
-        CheckButton(number);
+        CheckButton(_number);
         StartButtonActivation();
 
     }
 
-    private void CheckButton(int number)
+    private void CheckButton(int _number)
     {
-        GameObject.FindGameObjectWithTag("Button" + number.ToString()).GetComponent<RawImage>().texture = yellowBar;
-        GameObject.FindGameObjectWithTag("Button" + number.ToString()).transform.localScale *= 1.1f;
+        GameObject.FindGameObjectWithTag("Button" + _number.ToString()).GetComponent<RawImage>().texture = yellowBar;
+        GameObject.FindGameObjectWithTag("Button" + _number.ToString()).transform.localScale *= 1.1f;
     }
 
     private void StartButtonActivation()
