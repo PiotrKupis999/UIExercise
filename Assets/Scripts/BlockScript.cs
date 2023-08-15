@@ -23,8 +23,7 @@ public class BlockScript : MonoBehaviour
 
     private void Start()
     {
-
-
+        //color change depending on hp
         if (hp==2)
         {
             GetComponent<Renderer>().material.color = new Color(1, 0.4273585f, 0.4273585f);
@@ -34,14 +33,10 @@ public class BlockScript : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = new Color(1, 0.159434f, 0.159434f);
         }
-
     }
 
     void Update()
     {
-
-
-
         TimeAdd();
 
         //random rotating the block
@@ -57,7 +52,6 @@ public class BlockScript : MonoBehaviour
             Shoot();
             second = 0f;
         }
-
     }
 
 
@@ -69,14 +63,14 @@ public class BlockScript : MonoBehaviour
 
     private void Shoot()
     {
-        bullet = Instantiate(bulletPrefab, barrel.position, transform.rotation);
-        bullet.GetComponent<Rigidbody>().velocity = barrel.forward * bulletSpeed;
+        bullet = Instantiate(bulletPrefab, barrel.position, transform.rotation); //spawning the bullet
+        bullet.GetComponent<Rigidbody>().velocity = barrel.forward * bulletSpeed; //shooting the bullet
     }
 
     private void TimeAdd()
     {
-        second += Time.deltaTime;
-        rotateTime += Time.deltaTime;
+        second += Time.deltaTime; //variable for shooting
+        rotateTime += Time.deltaTime; //variable for rotating
     }
     
 }
