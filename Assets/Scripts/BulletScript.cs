@@ -15,18 +15,18 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider _other)
     {
-        //the barrel does not have 'block' tag
-        if (_other.tag == "Block")
+        //the barrel does not have 'block' name
+        if (_other.name == "Block(Clone)")
         {
             var currentHp = _other.gameObject.GetComponent<BlockScript>().hp;
 
             if (currentHp > 1)
             {
-                gameController.SpawnTheBlock(currentHp - 1, true);
+                gameController.SpawnTheBlock(currentHp - 1, true); //spawning block with damage
             }
 
-            Destroy(_other.gameObject);
-            Destroy(this.gameObject);
+            Destroy(_other.gameObject); //destroying the hit block
+            Destroy(this.gameObject); //destroying the bullet
         }
     }
 

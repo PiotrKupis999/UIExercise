@@ -6,6 +6,6 @@ public class WallScript : MonoBehaviour
 {
     private void OnTriggerEnter(Collider _other)
     {
-        Destroy(_other.gameObject);
+        Destroy(_other.gameObject); //destroying any collider on trigger
     }
 }
